@@ -43,6 +43,9 @@ async function run() {
     })
     app.get('/emailMass',async(req,res) =>{
       const email = req.query.email
+      if (!email) {
+        return res.status(400).send({ message: 'Email query parameter is required.' });
+    }
       const cursor = equipmentCollection.find({userEmail:email});
       const result = await cursor.toArray();
       res.send(result)
