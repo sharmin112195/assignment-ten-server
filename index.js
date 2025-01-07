@@ -31,7 +31,7 @@ async function run() {
     const equipmentCollection = client.db('equipmentDB').collection('equipment')
 
     app.get('/equipment',async(req,res) =>{
-      const cursor = equipmentCollection.find().limit(6);
+      const cursor = equipmentCollection.find().limit(8);
       const result = await cursor.toArray();
       res.send(result)
     })
